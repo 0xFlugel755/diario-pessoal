@@ -1,0 +1,24 @@
+<div class="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100 px-4 py-8">
+  <div class="max-w-5xl mx-auto">
+
+    <header class="flex items-center justify-between mb-8">
+      <h1 class="text-2xl font-semibold text-purple-700 flex items-center gap-2">
+        📔 Meu Diário
+      </h1>
+      <button (click)="sair()"
+              class="text-sm text-purple-400 hover:text-purple-600 border border-purple-100 rounded-full px-4 py-2">
+        Sair
+      </button>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-6 items-start">
+      <app-calendar
+        [dataSelecionada]="dataSelecionada"
+        [emojisPorData]="emojisPorData"
+        (dataEscolhida)="selecionarData($event)">
+      </app-calendar>
+
+      <app-diary-editor [dataSelecionada]="dataSelecionada"></app-diary-editor>
+    </div>
+  </div>
+</div>

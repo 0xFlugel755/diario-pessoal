@@ -1,0 +1,15 @@
+<div class="flex flex-wrap gap-2">
+  <button *ngFor="let opcao of opcoes"
+          type="button"
+          (click)="escolher(opcao)"
+          [title]="opcao.label"
+          class="w-12 h-12 rounded-full flex items-center justify-center text-2xl transition transform hover:scale-110"
+          [class.bg-gradient-to-br]="humorSelecionado === opcao.emoji"
+          [class.from-pink-200]="humorSelecionado === opcao.emoji"
+          [class.to-purple-200]="humorSelecionado === opcao.emoji"
+          [class.ring-2]="humorSelecionado === opcao.emoji"
+          [class.ring-purple-300]="humorSelecionado === opcao.emoji"
+          [class.bg-pink-50]="humorSelecionado !== opcao.emoji">
+    {{ opcao.emoji }}
+  </button>
+</div>

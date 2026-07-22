@@ -1,0 +1,45 @@
+<div class="rounded-3xl bg-white/80 shadow-lg shadow-pink-100 p-5 backdrop-blur-sm border border-pink-100">
+
+  <!-- Cabeçalho: mês / navegação -->
+  <div class="flex items-center justify-between mb-4">
+    <button (click)="mesAnterior()"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-pink-50 text-pink-400 hover:bg-pink-100 transition">
+      ‹
+    </button>
+    <h2 class="text-lg font-semibold text-purple-700">
+      {{ nomesMeses[mesAtual.getMonth()] }} {{ mesAtual.getFullYear() }}
+    </h2>
+    <button (click)="proximoMes()"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-pink-50 text-pink-400 hover:bg-pink-100 transition">
+      ›
+    </button>
+  </div>
+
+  <!-- Dias da semana -->
+  <div class="grid grid-cols-7 mb-2">
+    <span *ngFor="let nome of nomesDiasSemana"
+          class="text-center text-xs font-medium text-purple-300">{{ nome }}</span>
+  </div>
+
+  <!-- Grade de dias -->
+  <div class="grid grid-cols-7 gap-1">
+    <button *ngFor="let dia of dias"
+            (click)="selecionar(dia)"
+            [disabled]="dia.outroMes"
+            class="relative aspect-square rounded-2xl text-sm flex flex-col items-center justify-center transition"
+            [class.text-gray-300]="dia.outroMes"
+            [class.text-purple-700]="!dia.outroMes && !dia.selecionado"
+            [class.bg-gradient-to-br]="dia.selecionado"
+            [class.from-pink-300]="dia.selecionado"
+            [class.to-purple-300]="dia.selecionado"
+            [class.text-white]="dia.selecionado"
+            [class.ring-2]="dia.hoje && !dia.selecionado"
+            [class.ring-pink-300]="dia.hoje && !dia.selecionado"
+            [class.hover:bg-pink-50]="!dia.outroMes && !dia.selecionado">
+      <span>{{ dia.numero }}</span>
+      <span *ngIf="dia.temAnotacao" class="text-xs leading-none">{{ dia.emoji }}</span>
+      <span *ngIf="!dia.temAnotacao && !dia.outroMes"
+            class="w-1 h-1 rounded-full bg-pink-200 mt-0.5"></span>
+    </button>
+  </div>
+</div>

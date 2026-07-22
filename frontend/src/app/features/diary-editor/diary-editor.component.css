@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  font-family: 'Poppins', 'Nunito', sans-serif;
+}
+
+textarea {
+  font-family: 'Nunito', sans-serif;
+}
